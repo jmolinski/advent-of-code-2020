@@ -1,4 +1,4 @@
-with open('input.txt') as f:
+with open("input.txt") as f:
     adapters = sorted(map(int, f.readlines()))
 
 
@@ -21,5 +21,5 @@ def part2():
     return paths[0]
 
 
-print('Part 1', part1())
-print('Part 2', part2())
+print("Part 1", part1())
+print("Part 2", part2())
