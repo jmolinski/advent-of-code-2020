@@ -16,22 +16,6 @@ def part1():
     return min_waiting_time * earliest_bus_id
 
 
-def extended_euclid(x, y):
-    x0, x1, y0, y1 = 1, 0, 0, 1
-
-    while y > 0:
-        q, x, y = math.floor(x / y), y, x % y
-        x0, x1 = x1, x0 - q * x1
-        y0, y1 = y1, y0 - q * y1
-
-    return x0, y0
-
-
-def invmod(a, m):
-    x, y = extended_euclid(a, m)
-    return x % m
-
-
 def chinese_remainder_gauss(n, a):
     result = 0
     n_product = 1
@@ -40,7 +24,7 @@ def chinese_remainder_gauss(n, a):
 
     for ai, ni in zip(a, n):
         bi = n_product // ni
-        result += ai * bi * invmod(bi, ni)
+        result += ai * bi * pow(bi, -1, ni)
 
     return result % n_product
 
