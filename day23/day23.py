@@ -37,7 +37,7 @@ def part2(circle):
 
     # construct O(1) lookup table for nodes by their value
     current = first
-    lookup_table = {}
+    lookup_table = [None] * (1000 * 1000 + 1)
     while current:
         lookup_table[current.value] = current
         current = current.next
@@ -51,7 +51,7 @@ def part2(circle):
         current.next = cut.next.next.next
 
         # find place to place
-        excluded = [current.value, cut.value, cut.next.value, cut.next.next.value]
+        excluded = (cut.value, cut.next.value, cut.next.next.value)
         put_after_value = current.value - 1
         while put_after_value in excluded or put_after_value == 0:
             if put_after_value == 0:
